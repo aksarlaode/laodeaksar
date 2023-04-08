@@ -7,6 +7,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  swcMinify: true,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@aksar/api", "@aksar/auth", "@aksar/db"],
   /** We already do linting and typechecking as separate tasks in CI */
