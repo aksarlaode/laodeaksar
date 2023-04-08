@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { signIn, signOut } from "next-auth/react";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -99,7 +98,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Create <span className="text-pink-400">T3</span> Turbo
           </h1>
-          <AuthShowcase />
+          {/*<AuthShowcase />*/}
 
           <CreatePostForm />
 
@@ -134,7 +133,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
+{/*const AuthShowcase: React.FC = () => {
   const { data: session } = api.auth.getSession.useQuery();
 
   const { data: secretMessage } = api.auth.getSecretMessage.useQuery(
@@ -158,4 +157,4 @@ const AuthShowcase: React.FC = () => {
       </button>
     </div>
   );
-};
+};*/}
