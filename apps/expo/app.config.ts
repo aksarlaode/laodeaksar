@@ -1,11 +1,11 @@
 import type { ExpoConfig } from "@expo/config";
 
-const CLERK_PUBLISHABLE_KEY = "your-clerk-publishable-key";
+const CLERK_PUBLISHABLE_KEY = "pk_test_Y2xlYW4tcGFyYWtlZXQtMS5jbGVyay5hY2NvdW50cy5kZXYk";
 
 const defineConfig = (): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
-  scheme: "expo",
+  name: "laodeaksar",
+  slug: "laodeaksar",
+  scheme: "laodeaksar",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -31,7 +31,7 @@ const defineConfig = (): ExpoConfig => ({
   },
   extra: {
     eas: {
-      projectId: "your-project-id",
+      projectId: "a6cb2e86-6cd9-4dfa-ac61-517eacc76af8",
     },
     CLERK_PUBLISHABLE_KEY,
   },

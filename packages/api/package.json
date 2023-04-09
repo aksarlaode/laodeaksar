@@ -11,7 +11,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@aksar/auth": "^0.1.0",
     "@aksar/db": "^0.1.0",
     "@clerk/nextjs": "^4.15.0",
     "@trpc/client": "^10.19.1",

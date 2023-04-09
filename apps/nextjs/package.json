@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@aksar/api": "^0.1.0",
-    "@aksar/auth": "^0.1.0",
     "@aksar/db": "^0.1.0",
     "@aksar/tailwind-config": "^0.1.0",
     "@clerk/nextjs": "^4.15.0",
@@ -24,7 +23,6 @@
     "@trpc/react-query": "^10.19.1",
     "@trpc/server": "^10.19.1",
     "next": "^13.3.0",
-    "next-auth": "^4.21.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "1.12.2",
