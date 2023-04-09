@@ -11,6 +11,10 @@
       "enabled": false
     }
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
   "updateInternalDeps": true,
   "rangeStrategy": "bump"
 }
