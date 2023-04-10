@@ -1,7 +1,9 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { SignInButton, SignOutButton, useAuth } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/nextjs";
+
+import { Button } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -87,6 +89,8 @@ const Home: NextPage = () => {
     onSettled: () => postQuery.refetch(),
   });
 
+  const { user } = useUser();
+
   return (
     <>
       <Head>
@@ -99,9 +103,9 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Create <span className="text-pink-400">T3</span> Turbo
           </h1>
-          <AuthShowcase />
+          {!user && <AuthShowcase />}
 
-          <CreatePostForm />
+          {user && <CreatePostForm />}
 
           {postQuery.data ? (
             <div className="w-full max-w-2xl">
@@ -135,18 +139,17 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const user = useAuth();
+  const { openSignIn } = useClerk();
+  const { user } = useUser();
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      {/*session?.user && (
+      {user && (
         <p className="text-center text-2xl text-white">
-          {session && <span>Logged in as {session?.user?.name}</span>}
-          {secretMessage && <span> - {secretMessage}</span>}
+          <span>Logged in as {user.username}</span>
         </p>
-      )*/}
-      {!user.isSignedIn && <SignInButton />}
-      {!!user.isSignedIn && <SignOutButton />}
+      )}
+      <Button onClick={() => openSignIn()}>Sign In</Button>
     </div>
   );
 };
