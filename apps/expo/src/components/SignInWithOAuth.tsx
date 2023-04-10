@@ -5,7 +5,6 @@ import { useOAuth } from "@clerk/clerk-expo";
 
 import { useWarmUpBrowser } from "../hooks/useWarmUpBrowser";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 WebBrowser.maybeCompleteAuthSession();
 
 const SignInWithOAuth = () => {
