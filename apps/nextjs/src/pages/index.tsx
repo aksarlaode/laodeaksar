@@ -103,7 +103,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Create <span className="text-pink-400">T3</span> Turbo
           </h1>
-          {!user && <AuthShowcase />}
+          <AuthShowcase />
 
           {user && <CreatePostForm />}
 
@@ -139,7 +139,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { openSignIn } = useClerk();
+  const { openSignIn, signOut } = useClerk();
   const { user } = useUser();
 
   return (
@@ -149,7 +149,8 @@ const AuthShowcase: React.FC = () => {
           <span>Logged in as {user.username}</span>
         </p>
       )}
-      <Button onClick={() => openSignIn()}>Sign In</Button>
+      {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
+      {user && <Button onClick={void signOut()}>Sign Out</Button>}
     </div>
   );
 };
