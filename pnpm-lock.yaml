@@ -7478,14 +7478,14 @@ packages:
   /metro-minify-terser@0.73.9:
     resolution: {integrity: sha512-MTGPu2qV5qtzPJ2SqH6s58awHDtZ4jd7lmmLR+7TXDwtZDjIBA0YVfI0Zak2Haby2SqoNKrhhUns/b4dPAQAVg==}
     dependencies:
-      terser: 5.16.8
+      terser: 5.16.9
     dev: false
 
   /metro-minify-terser@0.76.1:
     resolution: {integrity: sha512-M0Dvu4IdePW63Hlbj0D2/HmV90195aWYGb/B9ZBelLrI2vhlD1t606EidhQb1HFq6EaD56LimgGHtvzy83MqKQ==}
     engines: {node: '>=16'}
     dependencies:
-      terser: 5.16.8
+      terser: 5.16.9
     dev: false
 
   /metro-minify-uglify@0.73.9:
@@ -10326,8 +10326,8 @@ packages:
       supports-hyperlinks: 2.3.0
     dev: false
 
-  /terser@5.16.8:
-    resolution: {integrity: sha512-QI5g1E/ef7d+PsDifb+a6nnVgC4F22Bg6T0xrBrz6iloVB4PUkkunp6V8nzoOOZJIzjWVdAGqCdlKlhLq/TbIA==}
+  /terser@5.16.9:
+    resolution: {integrity: sha512-HPa/FdTB9XGI2H1/keLFZHxl6WNvAI4YalHGtDQTlMnJcoqSab1UwL4l1hGEhs6/GmLHBZIg/YgB++jcbzoOEg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
