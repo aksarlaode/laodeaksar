@@ -9,7 +9,7 @@ const config = {
   reactStrictMode: true,
   swcMinify: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: ["@aksar/api", "@aksar/auth", "@aksar/db"],
+  transpilePackages: ["@aksar/api", "@aksar/ui", "@aksar/db"],
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
