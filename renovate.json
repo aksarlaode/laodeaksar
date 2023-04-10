@@ -8,7 +8,11 @@
       "matchPackagePatterns": [
         "^@aksar/"
       ],
-      "enabled": false
+      "enabled": false,
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "automerge": true
     }
   ],
   "lockFileMaintenance": {
