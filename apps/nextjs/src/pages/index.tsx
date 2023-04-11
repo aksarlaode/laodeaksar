@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useClerk, useUser } from "@clerk/nextjs";
 
-import { Button } from "@aksar/ui";
+import { Button, Input } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -45,8 +45,7 @@ const CreatePostForm: React.FC = () => {
 
   return (
     <div className="flex w-full max-w-2xl flex-col p-4">
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
+      <Input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
@@ -56,8 +55,7 @@ const CreatePostForm: React.FC = () => {
           {error.data.zodError.fieldErrors.title}
         </span>
       )}
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
+      <Input
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
@@ -67,8 +65,8 @@ const CreatePostForm: React.FC = () => {
           {error.data.zodError.fieldErrors.content}
         </span>
       )}
-      <button
-        className="rounded bg-pink-400 p-2 font-bold"
+      <Button
+        variant="outline"
         onClick={() => {
           mutate({
             title,
@@ -77,7 +75,7 @@ const CreatePostForm: React.FC = () => {
         }}
       >
         Create
-      </button>
+      </Button>
     </div>
   );
 };
@@ -139,7 +137,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { openSignIn, signOut } = useClerk();
+  const { openSignIn } = useClerk();
   const { user } = useUser();
 
   return (
@@ -150,7 +148,6 @@ const AuthShowcase: React.FC = () => {
         </p>
       )}
       {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
-      {user && <Button onClick={void signOut()}>Sign Out</Button>}
     </div>
   );
 };

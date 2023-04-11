@@ -17,6 +17,7 @@ const config = {
       rootDir: ["apps/nextjs"],
     },
   },
+  ignorePatterns: ["**/vendor/*"],
 };
 
 module.exports = config;
