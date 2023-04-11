@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+// include styles from the ui package
+import "@aksar/ui/styles.css";
 import type { AppType } from "next/app";
 import { ClerkProvider } from "@clerk/nextjs";
 

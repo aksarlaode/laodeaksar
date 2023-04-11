@@ -327,12 +327,6 @@ importers:
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.12.0
@@ -343,15 +337,15 @@ importers:
       '@types/react':
         specifier: ^18.0.34
         version: 18.0.34
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: 18.0.11
       dotenv-cli:
         specifier: ^7.2.1
         version: 7.2.1
       eslint:
         specifier: ^8.38.0
         version: 8.38.0
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(typescript@5.0.4)
@@ -7519,7 +7513,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -9333,7 +9326,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
