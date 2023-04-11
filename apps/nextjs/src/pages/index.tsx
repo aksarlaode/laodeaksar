@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useClerk, useUser } from "@clerk/nextjs";
 
-import { Button, Input } from "@aksar/ui";
+import { Button, Input, Label } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -45,26 +45,34 @@ const CreatePostForm: React.FC = () => {
 
   return (
     <div className="flex w-full max-w-2xl flex-col p-4">
-      <Input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      />
-      {error?.data?.zodError?.fieldErrors.title && (
-        <span className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.title}
-        </span>
-      )}
-      <Input
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Content"
-      />
-      {error?.data?.zodError?.fieldErrors.content && (
-        <span className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.content}
-        </span>
-      )}
+      <div>
+        <Label htmlFor="title">Label</Label>
+        <Input
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+        />
+        {error?.data?.zodError?.fieldErrors.title && (
+          <span className="mb-2 text-red-500">
+            {error.data.zodError.fieldErrors.title}
+          </span>
+        )}
+      </div>
+      <div>
+        <Label htmlFor="content">Label</Label>
+        <Input
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Content"
+        />
+        {error?.data?.zodError?.fieldErrors.content && (
+          <span className="mb-2 text-red-500">
+            {error.data.zodError.fieldErrors.content}
+          </span>
+        )}
+      </div>
       <Button
         variant="outline"
         onClick={() => {
