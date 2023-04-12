@@ -41,7 +41,7 @@ const CreatePostForm: React.FC = () => {
 
   const { mutateAsync, error } = api.post.create.useMutation({
     async onSuccess() {
-      await utils.post.all.invalidate();
+      await utils.invalidate();
     },
   });
 
