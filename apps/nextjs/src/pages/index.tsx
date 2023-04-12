@@ -7,13 +7,14 @@ import { useRouter } from "next/router";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 
-import { type Post } from "@aksar/db";
 import { Button, Input, Label } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
+type Post = RouterOutputs["post"]["all"][number];
+
 const PostCard: React.FC<{
-  post: RouterOutputs["post"]["all"][number];
+  post: Post;
   onPostDelete?: () => void;
 }> = ({ post, onPostDelete }) => {
   return (
@@ -143,7 +144,7 @@ const AuthShowcase: React.FC = () => {
     <div className="flex flex-col items-center justify-center gap-4">
       {user && (
         <p className="text-center text-2xl text-white">
-          <span>Logged in as {user.username}</span>
+          <span>Logged in as {user.fullName}</span>
         </p>
       )}
       {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
