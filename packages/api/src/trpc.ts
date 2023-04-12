@@ -27,7 +27,7 @@ import { prisma } from "@aksar/db";
  * processing a request
  *
  */
-type CreateContextOptions = {
+type AuthContext = {
   auth: SignedInAuthObject | SignedOutAuthObject;
 };
 
@@ -40,9 +40,9 @@ type CreateContextOptions = {
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+const createInnerTRPCContext = ({ auth }: AuthContext) => {
   return {
-    auth: opts.auth,
+    auth,
     prisma,
   };
 };
@@ -53,14 +53,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
-  const { req } = opts;
-
-  // Get the session from the server using the unstable_getServerSession wrapper function
-  const auth = getAuth(req);
-
-  return createInnerTRPCContext({
-    auth,
-  });
+  return createInnerTRPCContext({ auth: getAuth(opts.req) });
 };
 
 /**
