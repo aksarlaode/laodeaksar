@@ -16,11 +16,9 @@ const SignInWithOAuth = () => {
 
   const handleSignInWithDiscordPress = React.useCallback(async () => {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { createdSessionId, setActive } = await startOAuthFlow();
       if (createdSessionId) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        setActive({ session: createdSessionId });
+        void setActive?.({ session: createdSessionId });
       } else {
         // Modify this code to use signIn or signUp to set this missing requirements you set in your dashboard.
         throw new Error(
@@ -37,8 +35,7 @@ const SignInWithOAuth = () => {
     <View className="rounded-lg border-2 border-gray-500 p-4">
       <Button
         title="Sign in with Discord"
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onPress={handleSignInWithDiscordPress}
+        onPress={void handleSignInWithDiscordPress}
       />
     </View>
   );
