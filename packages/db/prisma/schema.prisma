@@ -16,4 +16,18 @@ model Post {
     title   String
     content String
     userId  String
+
+    message Message[]
+}
+
+model Message {
+    id           String @id @default(cuid())
+    fromUser     String
+    fromUserName String
+    message      String
+
+    postId String
+    post   Post   @relation(fields: [postId], references: [id])
+
+    @@index([postId])
 }

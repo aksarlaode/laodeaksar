@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useClerk, useUser } from "@clerk/nextjs";
+import { useForm } from "react-hook-form";
 
+import { type Post } from "@aksar/db";
 import { Button, Input, Label } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
@@ -31,28 +34,29 @@ const PostCard: React.FC<{
 
 const CreatePostForm: React.FC = () => {
   const utils = api.useContext();
+  const router = useRouter();
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const { mutate, error } = api.post.create.useMutation({
+  const { mutateAsync, error } = api.post.create.useMutation({
     async onSuccess() {
-      setTitle("");
-      setContent("");
       await utils.post.all.invalidate();
     },
   });
 
+  const { register, handleSubmit } = useForm<Post>();
+  const onSubmit = (formData: Post) => {
+    void mutateAsync(formData).then(() => {
+      void router.push("/");
+    });
+  };
+
   return (
-    <div className="flex w-full max-w-2xl flex-col p-4">
+    <form
+      className="flex w-full max-w-2xl flex-col gap-2 p-4"
+      onSubmit={void handleSubmit(onSubmit)}
+    >
       <div>
-        <Label htmlFor="title">Label</Label>
-        <Input
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-        />
+        <Label htmlFor="title">Title</Label>
+        <Input id="title" placeholder="Title" {...register("title")} />
         {error?.data?.zodError?.fieldErrors.title && (
           <span className="mb-2 text-red-500">
             {error.data.zodError.fieldErrors.title}
@@ -60,31 +64,18 @@ const CreatePostForm: React.FC = () => {
         )}
       </div>
       <div>
-        <Label htmlFor="content">Label</Label>
-        <Input
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Content"
-        />
+        <Label htmlFor="content">Content</Label>
+        <Input id="content" placeholder="Content" {...register("content")} />
         {error?.data?.zodError?.fieldErrors.content && (
           <span className="mb-2 text-red-500">
             {error.data.zodError.fieldErrors.content}
           </span>
         )}
       </div>
-      <Button
-        variant="outline"
-        onClick={() => {
-          mutate({
-            title,
-            content,
-          });
-        }}
-      >
+      <Button variant="outline" type="submit">
         Create
       </Button>
-    </div>
+    </form>
   );
 };
 
