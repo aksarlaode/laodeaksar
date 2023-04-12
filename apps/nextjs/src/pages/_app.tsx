@@ -20,8 +20,13 @@ const fontSans = FontSans({
 const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
     <>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <ClerkProvider {...pageProps}>
+      <style jsx global>{`
+        html {
+          font-family: ${fontSans.style.fontFamily};
+        }
+      `}</style>
+      <ClerkProvider {...pageProps}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main
             className={cn(
               "min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50",
@@ -36,10 +41,11 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
               {/*<SiteFooter />*/}
             </div>
           </main>
-        </ClerkProvider>
-      </ThemeProvider>
-      {/*<Analytics />
+        </ThemeProvider>
+
+        {/*<Analytics />
           <Toaster />*/}
+      </ClerkProvider>
     </>
   );
 };
