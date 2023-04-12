@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { Icons } from "@aksar/ui";
 
-import { siteConfig } from "../config/site";
+//import { siteConfig } from "../config/site";
 
 export function MainNav() {
   return (
@@ -11,14 +11,14 @@ export function MainNav() {
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.logo className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
+          {/*siteConfig.name*/}
         </span>
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
         <Link href="/docs">Documentation</Link>
         <Link href="/docs/primitives/accordion">Components</Link>
         <Link href="/figma">Figma</Link>
-        <Link href={siteConfig.links.github}>GitHub</Link>
+        <Link href="{siteConfig.links.github}">GitHub</Link>
       </nav>
     </div>
   );

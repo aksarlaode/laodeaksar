@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Icons, buttonVariants } from "@aksar/ui";
 
-import { siteConfig } from "../config/site";
+//import { siteConfig } from "../config/site";
 import { CommandMenu } from "./command-menu";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
@@ -20,7 +20,7 @@ export function SiteHeader() {
           </div>
           <nav className="flex items-center space-x-1">
             <Link
-              href={siteConfig.links.github}
+              href="{siteConfig.links.github}"
               target="_blank"
               rel="noreferrer"
             >
@@ -36,7 +36,7 @@ export function SiteHeader() {
               </div>
             </Link>
             <Link
-              href={siteConfig.links.twitter}
+              href="{siteConfig.links.twitter}"
               target="_blank"
               rel="noreferrer"
             >
