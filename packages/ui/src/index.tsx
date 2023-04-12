@@ -2,7 +2,9 @@
 import "./styles.css";
 
 // components
-export { Button, buttonVariants } from "./components/button";
-export { Label } from "./components/label";
-export { Input } from "./components/input";
-export { Textarea } from "./components/textarea";
+export * from "./components/button";
+export * from "./components/context-menu";
+export * from "./components/input";
+export * from "./components/label";
+export * from "./components/select";
+export * from "./components/textarea";
