@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -44,15 +46,15 @@ const CreatePostForm: React.FC = () => {
 
   const { register, handleSubmit } = useForm<Post>();
   const onSubmit = (formData: Post) => {
-    void mutateAsync(formData).then(() => {
-      void router.push("/");
+    mutateAsync(formData).then(() => {
+      router.push("/");
     });
   };
 
   return (
     <form
       className="flex w-full max-w-2xl flex-col gap-2 p-4"
-      onSubmit={void handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <div>
         <Label htmlFor="title">Title</Label>
