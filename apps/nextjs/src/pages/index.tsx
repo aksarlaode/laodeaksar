@@ -4,7 +4,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useClerk, useUser } from "@clerk/nextjs";
+import { useClerk, UserButton, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 
 import { Button, Input, Label } from "@aksar/ui";
@@ -145,6 +145,7 @@ const AuthShowcase: React.FC = () => {
       {user && (
         <p className="text-center text-2xl text-white">
           <span>Logged in as {user.fullName}</span>
+          <UserButton />
         </p>
       )}
       {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
