@@ -29,7 +29,6 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
         appearance={{
           variables: {
             fontFamily: fontSans.style.fontFamily,
-            colorBackground: "bg-white dark:bg-slate-900",
           },
         }}
         {...pageProps}

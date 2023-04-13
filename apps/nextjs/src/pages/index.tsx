@@ -146,9 +146,11 @@ const AuthShowcase: React.FC = () => {
         <p className="text-center text-2xl text-white">
           <span>Logged in as {user.fullName}</span>
           <UserButton
-          appearance={{
-            userProfile:{}
-          }}
+            appearance={{
+              variables: {
+                colorBackground: "bg-white dark:bg-slate-600",
+              },
+            }}
           />
         </p>
       )}
