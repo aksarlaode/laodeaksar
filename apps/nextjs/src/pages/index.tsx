@@ -4,10 +4,10 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useClerk, UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useClerk, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 
-import { Button, Input, Label } from "@aksar/ui";
+import { Button, Input, Label, Textarea } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -68,7 +68,7 @@ const CreatePostForm: React.FC = () => {
       </div>
       <div>
         <Label htmlFor="content">Content</Label>
-        <Input id="content" placeholder="Content" {...register("content")} />
+        <Textarea id="content" placeholder="Content" {...register("content")} />
         {error?.data?.zodError?.fieldErrors.content && (
           <span className="mb-2 text-red-500">
             {error.data.zodError.fieldErrors.content}
@@ -145,7 +145,11 @@ const AuthShowcase: React.FC = () => {
       {user && (
         <p className="text-center text-2xl text-white">
           <span>Logged in as {user.fullName}</span>
-          <UserButton />
+          <UserButton
+          appearance={{
+            userProfile:{}
+          }}
+          />
         </p>
       )}
       {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
