@@ -29,6 +29,9 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
       <ClerkProvider
         appearance={{
           baseTheme: dark,
+          variables: {
+            fontFamily: fontSans.style.fontFamily,
+          },
         }}
         {...pageProps}
       >
