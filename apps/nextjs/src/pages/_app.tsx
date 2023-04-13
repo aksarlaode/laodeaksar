@@ -4,7 +4,6 @@ import "@aksar/ui/styles.css";
 import type { AppType } from "next/app";
 import { Inter as FontSans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 
 import { cn } from "@aksar/ui";
 
@@ -28,9 +27,9 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
       `}</style>
       <ClerkProvider
         appearance={{
-          baseTheme: dark,
           variables: {
             fontFamily: fontSans.style.fontFamily,
+            colorBackground: "bg-white dark:bg-slate-900",
           },
         }}
         {...pageProps}
