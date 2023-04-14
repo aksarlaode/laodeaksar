@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
 import { Button, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
@@ -12,13 +14,14 @@ const SignInWithOAuth = () => {
   // https://docs.expo.dev/guides/authentication/#improving-user-experience
   useWarmUpBrowser();
 
-  const { startOAuthFlow } = useOAuth({ strategy: "oauth_discord" });
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_github" });
 
-  const handleSignInWithDiscordPress = React.useCallback(async () => {
+  const onPress = React.useCallback(async () => {
     try {
       const { createdSessionId, setActive } = await startOAuthFlow();
+
       if (createdSessionId) {
-        void setActive?.({ session: createdSessionId });
+        setActive?.({ session: createdSessionId });
       } else {
         // Modify this code to use signIn or signUp to set this missing requirements you set in your dashboard.
         throw new Error(
@@ -33,10 +36,7 @@ const SignInWithOAuth = () => {
 
   return (
     <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Button
-        title="Sign in with Discord"
-        onPress={void handleSignInWithDiscordPress}
-      />
+      <Button title="Sign in with GitHub" onPress={onPress} />
     </View>
   );
 };

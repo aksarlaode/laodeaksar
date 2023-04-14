@@ -56,6 +56,7 @@ const CreatePostForm: React.FC = () => {
     <form
       className="flex w-full max-w-2xl flex-col gap-2 p-4"
       onSubmit={handleSubmit(onSubmit)}
+      method="POST"
     >
       <div>
         <Label htmlFor="title">Title</Label>
