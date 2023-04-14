@@ -55,15 +55,7 @@ jobs:
         run: pnpm turbo db:generate
 
       - name: Build
-        run: pnpm turbo build
-        env:
-          SKIP_ENV_VALIDATION: true
-
-      - name: Install deps (with cache)
-        run: pnpm install
-
-      - name: Lint and type-check
-        run: pnpm turbo lint type-check
+        run: pnpm turbo build lint type-check
         env:
           SKIP_ENV_VALIDATION: true
 
