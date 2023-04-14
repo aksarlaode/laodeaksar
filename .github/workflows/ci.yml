@@ -48,9 +48,6 @@ jobs:
 
       # Normally, this would be done as part of the turbo pipeline - however since the Expo app doesn't depend on `@aksar/db` it doesn't care.
       # TODO: Free for all to find a better solution here.
-      - name: Generate Prisma Client
-        run: pnpm turbo db:generate
-
       - name: Build
         run: pnpm turbo build
         env:
@@ -58,6 +55,9 @@ jobs:
 
       - name: Install deps (with cache)
         run: pnpm install
+
+      - name: Generate Prisma Client
+        run: pnpm turbo db:generate
 
       - name: Lint and type-check
         run: pnpm turbo lint type-check
