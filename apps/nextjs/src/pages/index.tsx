@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { UserButton, useClerk, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 
-import { Button, Input, Label, Textarea } from "@aksar/ui";
+import { Button, H1, H2, Input, Label, P, Textarea } from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -20,8 +20,8 @@ const PostCard: React.FC<{
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold text-pink-400">{post.title}</h2>
-        <p className="mt-2 text-sm">{post.content}</p>
+        <H2>{post.title}</H2>
+        <P>{post.content}</P>
       </div>
       <div>
         <span
@@ -56,7 +56,7 @@ const CreatePostForm: React.FC = () => {
     <form
       className="flex w-full max-w-2xl flex-col gap-2 p-4"
       onSubmit={handleSubmit(onSubmit)}
-      method="POST"
+      method="post"
     >
       <div>
         <Label htmlFor="title">Title</Label>
@@ -100,9 +100,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+        <H1>
           Create <span className="text-pink-400">T3</span> Turbo
-        </h1>
+        </H1>
         <AuthShowcase />
 
         {user && <CreatePostForm />}
@@ -128,7 +128,7 @@ const Home: NextPage = () => {
             )}
           </div>
         ) : (
-          <p>Loading...</p>
+          <P>Loading...</P>
         )}
       </div>
     </>
@@ -144,16 +144,10 @@ const AuthShowcase: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       {user && (
-        <p className="text-center text-2xl text-white">
+        <P className="text-center text-2xl text-white">
           <span>Logged in as {user.fullName}</span>
-          <UserButton
-            appearance={{
-              variables: {
-                colorBackground: "bg-white dark:bg-slate-600",
-              },
-            }}
-          />
-        </p>
+          <UserButton />
+        </P>
       )}
       {!user && <Button onClick={() => openSignIn()}>Sign In</Button>}
     </div>
