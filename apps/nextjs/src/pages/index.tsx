@@ -7,7 +7,16 @@ import { useRouter } from "next/router";
 import { UserButton, useClerk, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 
-import { Button, H1, H2, Input, Label, P, Textarea } from "@aksar/ui";
+import {
+  Button,
+  H1,
+  H2,
+  Input,
+  Label,
+  P,
+  Textarea,
+  buttonVariants,
+} from "@aksar/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
@@ -56,11 +65,15 @@ const CreatePostForm: React.FC = () => {
     <form
       className="flex w-full max-w-2xl flex-col gap-2 p-4"
       onSubmit={handleSubmit(onSubmit)}
-      method="post"
     >
       <div>
         <Label htmlFor="title">Title</Label>
-        <Input id="title" placeholder="Title" {...register("title")} />
+        <Input
+          id="title"
+          type="text"
+          placeholder="Title"
+          {...register("title")}
+        />
         {error?.data?.zodError?.fieldErrors.title && (
           <span className="mb-2 text-red-500">
             {error.data.zodError.fieldErrors.title}
@@ -76,9 +89,7 @@ const CreatePostForm: React.FC = () => {
           </span>
         )}
       </div>
-      <Button variant="outline" type="submit">
-        Create
-      </Button>
+      <input className={buttonVariants({ variant: "outline" })} type="submit" value="Submit" />
     </form>
   );
 };
@@ -144,7 +155,7 @@ const AuthShowcase: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       {user && (
-        <P className="text-center text-2xl text-white">
+        <P className="text-center text-2xl">
           <span>Logged in as {user.fullName}</span>
           <UserButton />
         </P>
