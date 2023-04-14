@@ -1,29 +1,19 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { UserButton, useClerk, useUser } from "@clerk/nextjs";
-import { useForm } from "react-hook-form";
+import { useForm } from "@mantine/form";
 
-import {
-  Button,
-  H1,
-  H2,
-  Input,
-  Label,
-  P,
-  Textarea,
-  buttonVariants,
-} from "@aksar/ui";
+//import { useForm } from "react-hook-form";
 
-import { api, type RouterOutputs } from "~/utils/api";
+import { Button, H1, H2, Input, Label, P, Textarea } from "@aksar/ui";
 
-type Post = RouterOutputs["post"]["all"][number];
+import { api, type RouterInputs, type RouterOutputs } from "~/utils/api";
 
 const PostCard: React.FC<{
-  post: Post;
+  post: RouterOutputs["post"]["all"][number];
   onPostDelete?: () => void;
 }> = ({ post, onPostDelete }) => {
   return (
@@ -54,8 +44,10 @@ const CreatePostForm: React.FC = () => {
     },
   });
 
-  const { register, handleSubmit } = useForm<Post>();
-  const onSubmit = (formData: Post) => {
+  const { getInputProps, onSubmit } = useForm({
+    initialValues: { title: "", content: "" },
+  });
+  const handleSubmit = (formData: RouterInputs["post"]["create"]) => {
     mutateAsync(formData).then(() => {
       router.push("/");
     });
@@ -64,7 +56,7 @@ const CreatePostForm: React.FC = () => {
   return (
     <form
       className="flex w-full max-w-2xl flex-col gap-2 p-4"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit(handleSubmit)}
     >
       <div>
         <Label htmlFor="title">Title</Label>
@@ -72,7 +64,7 @@ const CreatePostForm: React.FC = () => {
           id="title"
           type="text"
           placeholder="Title"
-          {...register("title")}
+          {...getInputProps("title")}
         />
         {error?.data?.zodError?.fieldErrors.title && (
           <span className="mb-2 text-red-500">
@@ -82,14 +74,20 @@ const CreatePostForm: React.FC = () => {
       </div>
       <div>
         <Label htmlFor="content">Content</Label>
-        <Textarea id="content" placeholder="Content" {...register("content")} />
+        <Textarea
+          id="content"
+          placeholder="Content"
+          {...getInputProps("content")}
+        />
         {error?.data?.zodError?.fieldErrors.content && (
           <span className="mb-2 text-red-500">
             {error.data.zodError.fieldErrors.content}
           </span>
         )}
       </div>
-      <input className={buttonVariants({ variant: "outline" })} type="submit" value="Submit" />
+      <Button variant="outline" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };
