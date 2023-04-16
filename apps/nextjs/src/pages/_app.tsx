@@ -5,7 +5,7 @@ import type { AppType } from "next/app";
 import { Inter as FontSans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
-import { cn } from "@aksar/ui";
+import { Toaster, cn } from "@aksar/ui";
 
 import { api } from "~/utils/api";
 import { SiteHeader } from "~/components/site-header";
@@ -50,8 +50,8 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
           </main>
         </ThemeProvider>
 
-        {/*<Analytics />
-          <Toaster />*/}
+        {/*<Analytics />*/}
+        <Toaster />
       </ClerkProvider>
     </>
   );

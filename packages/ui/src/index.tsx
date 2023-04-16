@@ -18,7 +18,12 @@ export * from "./components/slider";
 export * from "./components/switch";
 export * from "./components/tabs";
 export * from "./components/textarea";
+export * from "./components/toast";
+export * from "./components/toaster";
 export * from "./components/typography";
 
 // lib
 export * from "./lib/utils";
+
+// hooks
+export * from "./hooks/use-toast";
