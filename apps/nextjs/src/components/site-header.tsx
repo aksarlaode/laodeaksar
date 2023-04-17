@@ -1,14 +1,21 @@
-import Link from "next/link";
+// import Link from "next/link";
 
-import { Icons, buttonVariants } from "@aksar/ui";
+// import { siteConfig } from "../config/site";
 
-//import { siteConfig } from "../config/site";
+import { UserButton, useClerk, useUser } from "@clerk/nextjs";
+
+import { Button, Icons /*, buttonVariants */ } from "@aksar/ui";
+
 import { CommandMenu } from "./command-menu";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 
 export function SiteHeader() {
+  const { openSignIn } = useClerk();
+
+  const { user } = useUser();
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-slate-900">
       <div className="container flex h-16 items-center">
@@ -19,7 +26,7 @@ export function SiteHeader() {
             <CommandMenu />
           </div>
           <nav className="flex items-center space-x-1">
-            <Link
+            {/*<Link
               href="{siteConfig.links.github}"
               target="_blank"
               rel="noreferrer"
@@ -50,8 +57,14 @@ export function SiteHeader() {
                 <Icons.twitter className="h-5 w-5 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
-            </Link>
+            </Link>*/}
             <ModeToggle />
+            {user && <UserButton />}
+            {!user && (
+              <Button size="sm" variant="ghost" onClick={() => openSignIn()}>
+                <Icons.user className="h-5 w-5 fill-current" />
+              </Button>
+            )}
           </nav>
         </div>
       </div>
