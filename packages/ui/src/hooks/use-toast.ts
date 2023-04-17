@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // Inspired by react-hot-toast library
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "../components/toast";
 
 const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 1000;
+const TOAST_REMOVE_DELAY = 1000000;
 
 type ToasterToast = ToastProps & {
   id: string;
-  ref?: React.RefObject<HTMLLIElement>;
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: ToastActionElement;
@@ -81,29 +78,6 @@ export const reducer = (state: State, action: Action): State => {
       };
 
     case "UPDATE_TOAST":
-      const toast = state.toasts.find((t) => t.id === action.toast.id);
-      if (
-        toast?.variant !== "destructive" &&
-        action.toast.variant === "destructive" &&
-        toast?.ref?.current
-      ) {
-        //@ts-ignore
-        toast.ref.current.animate(
-          [
-            { transform: "translateX(-30px)" },
-            { transform: "translateX(30px)" },
-            { transform: "translateX(-20px)" },
-            { transform: "translateX(20px)" },
-            { transform: "translateX(-10px)" },
-            { transform: "translateX(10px)" },
-            { transform: "translateX(0)" },
-          ],
-          {
-            duration: 400,
-            iterations: 1,
-          },
-        );
-      }
       return {
         ...state,
         toasts: state.toasts.map((t) =>
@@ -161,12 +135,12 @@ function dispatch(action: Action) {
   });
 }
 
-type Toast = Omit<ToasterToast, "id">;
+type Toast = Omit<ToasterToast, "id">
 
 function toast({ ...props }: Toast) {
   const id = genId();
 
-  const update = (props: Toast) =>
+  const update = (props: ToasterToast) =>
     dispatch({
       type: "UPDATE_TOAST",
       toast: { ...props, id },
@@ -177,7 +151,6 @@ function toast({ ...props }: Toast) {
     type: "ADD_TOAST",
     toast: {
       ...props,
-      ref: props.ref ?? React.createRef(),
       id,
       open: true,
       onOpenChange: (open) => {

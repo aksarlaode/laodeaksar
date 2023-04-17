@@ -2,9 +2,10 @@ import {
   AlertTriangle,
   ArrowRight,
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
-  //Circle,
+  Circle,
   ClipboardCheck,
   Copy,
   CreditCard,
@@ -45,8 +46,10 @@ export const Icons = {
       <circle cx="12" cy="12" r="10"></circle>
     </svg>
   ),
+  circle: Circle,
   close: X,
   spinner: Loader2,
+  chevronDown: ChevronDown,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   trash: Trash,

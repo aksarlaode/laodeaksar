@@ -1,6 +1,7 @@
 // styles
 import "./styles.css";
 
+
 // components
 export * from "./components/alert-dialog";
 export * from "./components/button";
@@ -14,6 +15,7 @@ export * from "./components/label";
 export * from "./components/scroll-area";
 export * from "./components/select";
 export * from "./components/separator";
+export * from "./components/sheet";
 export * from "./components/slider";
 export * from "./components/switch";
 export * from "./components/tabs";

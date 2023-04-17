@@ -1,6 +1,5 @@
 import * as React from "react";
 //import { useRouter } from "next/navigation";
-import { /*File,*/ Laptop, Moon, SunMedium } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import {
@@ -12,12 +11,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+  Icons,
   cn,
   type DialogProps,
 } from "@aksar/ui";
 
 export function CommandMenu({ ...props }: DialogProps) {
-  //const router = useRouter();
+  // const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const { setTheme } = useTheme();
 
@@ -43,14 +43,14 @@ export function CommandMenu({ ...props }: DialogProps) {
       <Button
         variant="outline"
         className={cn(
-          "relative h-9 w-full justify-start text-sm text-slate-500 dark:text-slate-400 sm:pr-12 md:w-40 lg:w-64",
+          "relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64",
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border border-slate-100 bg-slate-100 px-1.5 font-mono text-[10px] font-medium text-slate-600 opacity-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 sm:flex">
+        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
@@ -73,35 +73,35 @@ export function CommandMenu({ ...props }: DialogProps) {
                 </CommandItem>
                 ))*/}
           </CommandGroup>
-          <CommandGroup heading="Components">
-            {/*allDocs
-              .filter((doc) => doc.component)
-              .map((doc) => (
+          {/*docsConfig.sidebarNav.map((group) => (
+            <CommandGroup key={group.title} heading={group.title}>
+              {group.items.map((navItem) => (
                 <CommandItem
-                  key={doc._id}
+                  key={navItem.href}
                   onSelect={() => {
-                    runCommand(() => router.push(doc.slug));
+                    runCommand(() => router.push(navItem.href as string));
                   }}
                 >
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">
                     <Circle className="h-3 w-3" />
                   </div>
-                  {doc.title}
+                  {navItem.title}
                 </CommandItem>
-                ))*/}
-          </CommandGroup>
+              ))}
+            </CommandGroup>
+          ))*/}
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <SunMedium className="mr-2 h-4 w-4" />
+              <Icons.sun className="mr-2 h-4 w-4" />
               Light
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <Moon className="mr-2 h-4 w-4" />
+              <Icons.moon className="mr-2 h-4 w-4" />
               Dark
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <Laptop className="mr-2 h-4 w-4" />
+              <Icons.laptop className="mr-2 h-4 w-4" />
               System
             </CommandItem>
           </CommandGroup>

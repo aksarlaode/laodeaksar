@@ -17,8 +17,8 @@ export function SiteHeader() {
   const { user } = useUser();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-slate-900">
-      <div className="container flex h-16 items-center">
+    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">
+      <div className="container flex h-14 items-center">
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between space-x-2 sm:space-x-4 md:justify-end">
