@@ -9,6 +9,7 @@ import { Toaster, cn } from "@aksar/ui";
 
 import { api } from "~/utils/api";
 import { SiteHeader } from "~/components/site-header";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
 
 const fontSans = FontSans({
@@ -47,6 +48,7 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
               </div>
               {/*<SiteFooter />*/}
             </div>
+            <TailwindIndicator />
           </main>
         </ThemeProvider>
 

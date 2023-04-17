@@ -63,6 +63,7 @@ export function SiteHeader() {
             {!user && (
               <Button size="sm" variant="ghost" onClick={() => openSignIn()}>
                 <Icons.user className="h-5 w-5 fill-current" />
+                <span className="sr-only">LogIn</span>
               </Button>
             )}
           </nav>
