@@ -21,7 +21,6 @@
     "@aksar/eslint-config": "^0.1.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
-    "@radix-ui/react-accordion": "^1.1.1",
     "@types/prettier": "^2.7.2",
     "eslint": "^8.38.0",
     "prettier": "^2.8.7",
