@@ -9,6 +9,7 @@ import { Toaster, cn } from "@aksar/ui";
 
 import { api } from "~/utils/api";
 import { SiteHeader } from "~/components/site-header";
+import { StyleSwitcher } from "~/components/style-switcher";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
 
@@ -37,21 +38,21 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main
             className={cn(
-              "min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-50",
+              "min-h-screen bg-background font-sans antialiased",
               fontSans.variable,
             )}
           >
-            <div className="flex min-h-screen flex-col">
+            <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
-              <div className="container flex-1">
+              <div className="flex-1">
                 <Component {...pageProps} />
               </div>
               {/*<SiteFooter />*/}
-            </div>
+            </div>{" "}
             <TailwindIndicator />
           </main>
         </ThemeProvider>
-
+        <StyleSwitcher />
         {/*<Analytics />*/}
         <Toaster />
       </ClerkProvider>

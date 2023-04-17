@@ -71,7 +71,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   <File className="mr-2 h-4 w-4" />
                   {navItem.title}
                 </CommandItem>
-                ))*/}
+            ))*/}
           </CommandGroup>
           {/*docsConfig.sidebarNav.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
